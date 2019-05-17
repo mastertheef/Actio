@@ -1,0 +1,9 @@
+C:\Projects\Actio\Actio.Common\bin\Debug\netcoreapp2.1\Actio.Common.deps.json
+C:\Projects\Actio\Actio.Common\bin\Debug\netcoreapp2.1\Actio.Common.dll
+C:\Projects\Actio\Actio.Common\bin\Debug\netcoreapp2.1\Actio.Common.pdb
+C:\Projects\Actio\Actio.Common\obj\Debug\netcoreapp2.1\Actio.Common.csprojAssemblyReference.cache
+C:\Projects\Actio\Actio.Common\obj\Debug\netcoreapp2.1\Actio.Common.csproj.CoreCompileInputs.cache
+C:\Projects\Actio\Actio.Common\obj\Debug\netcoreapp2.1\Actio.Common.AssemblyInfoInputs.cache
+C:\Projects\Actio\Actio.Common\obj\Debug\netcoreapp2.1\Actio.Common.AssemblyInfo.cs
+C:\Projects\Actio\Actio.Common\obj\Debug\netcoreapp2.1\Actio.Common.dll
+C:\Projects\Actio\Actio.Common\obj\Debug\netcoreapp2.1\Actio.Common.pdb
