@@ -1,5 +1,5 @@
-﻿using System;
-using System.Diagnostics;
+﻿using Actio.Services.Activities.Domain.Models;
+using System;
 using System.Threading.Tasks;
 
 namespace Actio.Services.Activities.Domain.Repositories

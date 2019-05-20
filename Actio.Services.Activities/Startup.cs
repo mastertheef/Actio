@@ -14,6 +14,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Actio.Services.Activities.Domain.Repositories;
+using Actio.Services.Activities.Repositories;
+using Actio.Services.Activities.Services;
 
 namespace Actio.Services.Activities
 {
@@ -33,6 +36,10 @@ namespace Actio.Services.Activities
             services.AddRabbitMq(Configuration);
             services.AddMongoDB(Configuration);
             services.AddScoped<ICommandHandler<CreateActivity>, CreateActivityHandler>();
+            services.AddScoped<IActivityRepository, AcivityRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IDatabaseSeeder, CustomMongoSeeder>();
+            services.AddScoped<IActivityService, ActivityService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +55,7 @@ namespace Actio.Services.Activities
             }
 
             app.UseHttpsRedirection();
+            app.ApplicationServices.GetService<IDatabaseInitializer>().InitializeAsync();
             app.UseMvc();
         }
     }
