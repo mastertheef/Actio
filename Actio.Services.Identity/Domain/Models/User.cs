@@ -1,4 +1,5 @@
 ﻿using Actio.Common.Exceptions;
+using Actio.Services.Identity.Domain.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +35,22 @@ namespace Actio.Services.Identity.Domain.Models
 
         protected User()
         {
+        }
+
+        public void SetPassword(string password, IEncriptor encriptor)
+        {
+            if (string.IsNullOrEmpty(password))
+            {
+                throw new ActioException("empty_password", "Password cannot be empty");
+            }
+
+            Salt = encriptor.GetSalt(password);
+            Password = encriptor.GetHash(password, Salt);
+        }
+
+        public bool ValidatePassword(string password, IEncriptor encriptor)
+        {
+            return Password.Equals(encriptor.GetHash(password, Salt));
         }
     }
 }

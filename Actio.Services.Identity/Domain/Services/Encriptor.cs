@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 
 namespace Actio.Services.Identity.Domain.Services
@@ -12,12 +13,17 @@ namespace Actio.Services.Identity.Domain.Services
 
         public string GetHash(string value, string salt)
         {
-            throw new NotImplementedException();
+            var pbkdf2 = new Rfc2898DeriveBytes(value, GetBytes(salt), DeriveBytesIterationsCount);
+            return Convert.ToBase64String(pbkdf2.GetBytes(SaltSize));
         }
 
         public string GetSalt(string value)
         {
-            throw new NotImplementedException();
+            var random = new Random();
+            var saltBytes = new byte[SaltSize];
+            var rng = RandomNumberGenerator.Create();
+            rng.GetBytes(saltBytes);
+            return Convert.ToBase64String(saltBytes);
         }
 
         private static byte[] GetBytes(string value)
